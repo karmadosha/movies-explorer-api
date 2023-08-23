@@ -19,7 +19,7 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({
-  ORIGIN,
+  origin: ORIGIN,
   credentials: true,
   maxAge: 30,
 }));
