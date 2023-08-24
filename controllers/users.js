@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const ERR_NOT_UNIQUE = require('../errors/err-notunique');
 const ERR_BAD_REQUEST = require('../errors/err-badrequest');
-const { NODE_ENV, SECRET_KEY } = require('../utils/constants');
 const ERR_NOT_FOUND = require('../errors/err-notfound');
+
+const { NODE_ENV, SECRET_KEY } = process.env;
 
 module.exports.createUser = (req, res, next) => {
   const { email, password, name } = req.body;
