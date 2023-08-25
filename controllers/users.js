@@ -50,7 +50,7 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.logout = (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Успешный выход' });
+  res.clearCookie('jwt', { sameSite: 'none', secure: true }).send({ message: 'Успешный выход' });
 };
 
 module.exports.getUserInfo = (req, res, next) => {
