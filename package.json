@@ -29,6 +29,7 @@
     "winston": "^3.10.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.14",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.28.1",
