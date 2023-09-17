@@ -18,11 +18,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true });
 const app = express();
 
 app.use(helmet());
-app.use(cors({
-  origin: ORIGIN,
-  credentials: true,
-  maxAge: 30,
-}));
+app.use(cors({ origin: ORIGIN }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
