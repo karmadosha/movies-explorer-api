@@ -38,9 +38,24 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? SECRET_KEY : 'some-secret-key',
         { expiresIn: '7d' },
       );
-      res.send({ token });
+      res.cookie('jwt', token, {
+        maxAge: 3600000 * 7 * 24,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+      })
+        .send(user);
     })
     .catch(next);
+};
+
+module.exports.signout = (req, res) => {
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  });
+  res.json({ message: 'Пользователь вышел' });
 };
 
 module.exports.getUserInfo = (req, res, next) => {

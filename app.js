@@ -11,14 +11,22 @@ const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./utils/limiter');
 const errorHandler = require('./middlewares/errorhandler');
-const { ORIGIN, PORT, DB_URL } = require('./utils/constants');
+const { PORT, DB_URL } = require('./utils/constants');
 
 mongoose.connect(DB_URL, { useNewUrlParser: true });
 
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: ORIGIN }));
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://karmamovies.nomoredomainsicu.ru',
+    'http://karmamovies.nomoredomainsicu.ru',
+  ],
+  credentials: true,
+}));
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
