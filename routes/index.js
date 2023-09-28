@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { validateUser, validateLogin } = require('../middlewares/validation');
-const { createUser, login, signout } = require('../controllers/users');
+const { createUser, login } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const userRoutes = require('./users');
 const movieRoutes = require('./movies');
@@ -13,7 +13,6 @@ router.use(auth);
 
 router.use('/users', userRoutes);
 router.use('/movies', movieRoutes);
-router.post('/signout', signout);
 
 router.use('/*', (req, res, next) => {
   next(new ERR_NOT_FOUND('Страница не найдена'));
