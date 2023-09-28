@@ -4,7 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { errors } = require('celebrate');
 const router = require('./routes/index');
@@ -24,10 +23,8 @@ app.use(cors({
     'https://karmamovies.nomoredomainsicu.ru',
     'http://karmamovies.nomoredomainsicu.ru',
   ],
-  credentials: true,
 }));
 
-app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
